@@ -33,8 +33,46 @@ namespace FormBD
             string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
             string filePath = Path.Combine(downloadsPath, this.nombre + ".txt");
 
+            //string de cursos p almacenarlos en la BD
+            string cursos_str = string.Join(",", ingresante.Curso);
+            
+            //obtenemos el string de conexion
+            string stringConexion = ConfigurationManager.AppSettings["conexion"];   
+
+            using (SqlConnection conn = new SqlConnection(stringConexion))
+            {
+                try
+                {
+                    conn.Open();
+                    MessageBox.Show("Conexion exitosa");
+
+                    string insertQuery = "INSERT INTO dbo.Ingresantes (nombre, cuit, genero, edad, pais, domicilio, cursos) VALUES (@nombre, @cuit, @genero, @edad, @pais, @domicilio, @cursos)";
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", ingresante.Nombre);
+                        cmd.Parameters.AddWithValue("@cuit", ingresante.Cuit.Replace("-", ""));
+                        cmd.Parameters.AddWithValue("@genero", ingresante.Genero);
+                        cmd.Parameters.AddWithValue("@edad", ingresante.Edad);
+                        cmd.Parameters.AddWithValue("@pais", ingresante.Pais);
+                        cmd.Parameters.AddWithValue("@domicilio", ingresante.Direccion);
+                        cmd.Parameters.AddWithValue("@cursos", cursos_str);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();                        
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
             // Verificar si el archivo existe. 
-            // Si no existe lo creamos y guardamos el ingresante
+            // Si no existe lo creamos y guardamos el ingresante            
             if (!File.Exists(filePath))
             {
                 // Si el archivo no existe, agregar el ingresante                
@@ -93,24 +131,7 @@ namespace FormBD
                     string[] partes = registro.Split('|');
 
                     // Extraemos el CUIT de cada registro
-                    string cuit = partes[1];
-
-                    try
-                    {
-                        string stringConexion = ConfigurationManager.AppSettings["conexion"];
-                        string connectionString = stringConexion;
-
-                        SqlConnection conn = new SqlConnection(connectionString);
-                        conn.Open();
-                        MessageBox.Show("Conexion exitosa");
-                        conn.Close();
-
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    string cuit = partes[1];                    
 
                     // Comparamos el DNI con el Cuit del ingresante
                     if (ingresante.Cuit.Replace("-", "") == cuit)

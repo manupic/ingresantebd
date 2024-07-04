@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D560D924-B4D9-44BE-BEAD-08FBDA4E9FB4}|FormBD\\FormBD.csproj|C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\formbd\\curso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D560D924-B4D9-44BE-BEAD-08FBDA4E9FB4}|FormBD\\FormBD.csproj|solutionrelative:formbd\\curso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D560D924-B4D9-44BE-BEAD-08FBDA4E9FB4}|FormBD\\FormBD.csproj|c:\\users\\emanuel\\desktop\\manu\\programacion 3\\formbd\\formbd\\formexportacion.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D560D924-B4D9-44BE-BEAD-08FBDA4E9FB4}|FormBD\\FormBD.csproj|solutionrelative:formbd\\formexportacion.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -35,10 +39,6 @@
       "RelativeMoniker": "D:0:0:{D560D924-B4D9-44BE-BEAD-08FBDA4E9FB4}|FormBD\\FormBD.csproj|solutionrelative:formbd\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D560D924-B4D9-44BE-BEAD-08FBDA4E9FB4}|FormBD\\FormBD.csproj|C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\formbd\\curso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D560D924-B4D9-44BE-BEAD-08FBDA4E9FB4}|FormBD\\FormBD.csproj|solutionrelative:formbd\\curso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D560D924-B4D9-44BE-BEAD-08FBDA4E9FB4}|FormBD\\FormBD.csproj|C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\formbd\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{D560D924-B4D9-44BE-BEAD-08FBDA4E9FB4}|FormBD\\FormBD.csproj|solutionrelative:formbd\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
@@ -50,24 +50,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FormExportacion.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\FormExportacion.Designer.cs",
-              "RelativeDocumentMoniker": "FormBD\\FormExportacion.Designer.cs",
-              "ToolTip": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\FormExportacion.Designer.cs",
-              "RelativeToolTip": "FormBD\\FormExportacion.Designer.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAApwGkAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T00:35:37.598Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "FormBD\\Form1.Designer.cs",
@@ -79,7 +66,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "FormMDI.cs",
               "DocumentMoniker": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\FormMDI.cs",
               "RelativeDocumentMoniker": "FormBD\\FormMDI.cs",
@@ -91,7 +78,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "FormMDI.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\FormMDI.cs",
               "RelativeDocumentMoniker": "FormBD\\FormMDI.cs",
@@ -102,7 +89,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FormExportacion.cs",
               "DocumentMoniker": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\FormExportacion.cs",
               "RelativeDocumentMoniker": "FormBD\\FormExportacion.cs",
@@ -114,7 +101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "FormExportacion.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\FormExportacion.cs",
               "RelativeDocumentMoniker": "FormBD\\FormExportacion.cs",
@@ -125,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\Form1.cs",
               "RelativeDocumentMoniker": "FormBD\\Form1.cs",
@@ -137,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\Form1.cs",
               "RelativeDocumentMoniker": "FormBD\\Form1.cs",
@@ -156,19 +143,34 @@
               "RelativeToolTip": "FormBD\\App.config",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-07-02T23:35:39.403Z"
+              "WhenOpened": "2024-07-02T23:35:39.403Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "Curso.cs",
               "DocumentMoniker": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\Curso.cs",
               "RelativeDocumentMoniker": "FormBD\\Curso.cs",
               "ToolTip": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\Curso.cs",
               "RelativeToolTip": "FormBD\\Curso.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAmwHAAAAAVAAAA",
+              "ViewState": "AQIAACUAAAAAAAAAAAAkwDAAAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T22:58:13.87Z"
+              "WhenOpened": "2024-07-02T22:58:13.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormExportacion.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\FormExportacion.Designer.cs",
+              "RelativeDocumentMoniker": "FormBD\\FormExportacion.Designer.cs",
+              "ToolTip": "C:\\Users\\Emanuel\\Desktop\\Manu\\Programacion 3\\FormBD\\FormBD\\FormExportacion.Designer.cs",
+              "RelativeToolTip": "FormBD\\FormExportacion.Designer.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAApwGkAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T00:35:37.598Z",
+              "EditorCaption": ""
             }
           ]
         }
