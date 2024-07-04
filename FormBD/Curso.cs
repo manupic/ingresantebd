@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -33,44 +29,6 @@ namespace FormBD
             string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
             string filePath = Path.Combine(downloadsPath, this.nombre + ".txt");
 
-            //string de cursos p almacenarlos en la BD
-            string cursos_str = string.Join(",", ingresante.Curso);
-            
-            //obtenemos el string de conexion
-            string stringConexion = ConfigurationManager.AppSettings["conexion"];   
-
-            using (SqlConnection conn = new SqlConnection(stringConexion))
-            {
-                try
-                {
-                    conn.Open();
-                    MessageBox.Show("Conexion exitosa");
-
-                    string insertQuery = "INSERT INTO dbo.Ingresantes (nombre, cuit, genero, edad, pais, domicilio, cursos) VALUES (@nombre, @cuit, @genero, @edad, @pais, @domicilio, @cursos)";
-                    using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@nombre", ingresante.Nombre);
-                        cmd.Parameters.AddWithValue("@cuit", ingresante.Cuit.Replace("-", ""));
-                        cmd.Parameters.AddWithValue("@genero", ingresante.Genero);
-                        cmd.Parameters.AddWithValue("@edad", ingresante.Edad);
-                        cmd.Parameters.AddWithValue("@pais", ingresante.Pais);
-                        cmd.Parameters.AddWithValue("@domicilio", ingresante.Direccion);
-                        cmd.Parameters.AddWithValue("@cursos", cursos_str);
-
-                        int rowsAffected = cmd.ExecuteNonQuery();                        
-                        
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-
             // Verificar si el archivo existe. 
             // Si no existe lo creamos y guardamos el ingresante            
             if (!File.Exists(filePath))
@@ -80,11 +38,12 @@ namespace FormBD
                 try
                 {
                     writer = new StreamWriter(filePath, true);
-                    writer.WriteLine(formatoIngresante(ingresante));
+                    writer.WriteLine(Funciones.formatoIngresante(ingresante));
+                    MessageBox.Show("Ingresante guardado en txt exitosamente.", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception e)
                 {
-                    Console.Write(e.ToString());
+                    MessageBox.Show("Error: " + e.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
                 finally
                 {
@@ -102,16 +61,49 @@ namespace FormBD
             }
         }
 
-        public string formatoIngresante(Ingresante ingresante)
+        public void guardarIngresanteEnBD(Ingresante ingresante, string curso)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(ingresante.Nombre).Append("|");
-            sb.Append(ingresante.Cuit.Replace("-", "")).Append("|");
-            sb.Append(ingresante.Genero).Append("|");
-            sb.Append(ingresante.Edad).Append("|");
-            sb.Append(ingresante.Pais).Append("|");
-            sb.Append(ingresante.Direccion);
-            return sb.ToString();
+            // Obtenemos el string de conexión
+            string stringConexion = ConfigurationManager.AppSettings["conexion"];
+
+            using (SqlConnection conn = new SqlConnection(stringConexion))
+            {
+                try
+                {
+                    conn.Open();
+
+                    string cuit = Funciones.formatoCuit(ingresante.Cuit);
+
+                    //Recorro el array de cursos y por cada curso lo guardo en la BD
+                    string insertQuery = "INSERT INTO dbo.Ingresantes (nombre, cuit, genero, edad, pais, domicilio, cursos) " +
+                                        "VALUES (@nombre, @cuit, @genero, @edad, @pais, @domicilio, @curso)";
+
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre", ingresante.Nombre);
+                        cmd.Parameters.AddWithValue("@cuit", cuit);
+                        cmd.Parameters.AddWithValue("@genero", ingresante.Genero);
+                        cmd.Parameters.AddWithValue("@edad", ingresante.Edad);
+                        cmd.Parameters.AddWithValue("@pais", ingresante.Pais);
+                        cmd.Parameters.AddWithValue("@domicilio", ingresante.Direccion);
+                        cmd.Parameters.AddWithValue("@curso", curso);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();                      
+                    }
+                   
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al guardar el ingresante en el curso " + curso +": " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+                finally
+                {
+                    if (conn.State == System.Data.ConnectionState.Open)
+                    {
+                        conn.Close();
+                    }
+                }
+            }
         }
 
         public void agregarIngresanteAlCurso(string path, Ingresante ingresante)
@@ -151,7 +143,8 @@ namespace FormBD
                     try
                     {
                         writer = new StreamWriter(path, true);
-                        writer.WriteLine(formatoIngresante(ingresante));
+                        writer.WriteLine(Funciones.formatoIngresante(ingresante));
+                        MessageBox.Show("Ingresante guardado en txt exitosamente.", "ÉXITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception e)
                     {

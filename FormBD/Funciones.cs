@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Windows.Forms;
 
 namespace FormBD
@@ -58,6 +54,23 @@ namespace FormBD
                     return calculado == digito;
                 }
             }
+            
+            public static string formatoCuit(string cuit)
+            {
+                return cuit.Replace("-", "");
+            }
+
+            public static string formatoIngresante(Ingresante ingresante)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(ingresante.Nombre).Append("|");
+                sb.Append(formatoCuit(ingresante.Cuit)).Append("|");
+                sb.Append(ingresante.Genero).Append("|");
+                sb.Append(ingresante.Edad).Append("|");
+                sb.Append(ingresante.Pais).Append("|");
+                sb.Append(ingresante.Direccion);
+                return sb.ToString();
+            }
 
             public static void mError(Form actual, string mensaje)
             {
@@ -68,7 +81,6 @@ namespace FormBD
             {
                 MessageBox.Show(actual, mensaje, "MENSAJE", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
 
             public static bool mConsulta(Form actual, string mensaje)
             {
